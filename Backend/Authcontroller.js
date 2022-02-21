@@ -1,9 +1,9 @@
 const express=require('express');
 const jwt = require('jsonwebtoken');
 const cookieparser= require('cookie-parser');
-const User=require('./UserSchema');
+const User=require('.schemas/UserSchema');
 const bodyParser = require('body-parser')
-const Pdf=require('./PdfSchema');
+const Pdf=require('.schemas/PdfSchema');
 
 
 exports.signIn=async(req,res,next)=>{
