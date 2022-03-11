@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+div.signup{
+  background-color: #2A628F;
+
+}
+
+div.signup:hover{
+  background-color: #3E92CC;
+
+}
+div.signin{
+  background-color: #2A628F;
+
+}
+
+div.signin:hover{
+  background-color: #3E92CC;
+
+}

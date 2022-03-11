@@ -5,6 +5,7 @@ const cors=require('cors');
 const bodyParser = require('body-parser');
 const cookieparser= require('cookie-parser');
 const authuser=require('./authuser');
+const hashing=require('./hashing');
 
 const viewuser=require('./viewuser');
 
@@ -30,6 +31,7 @@ app.use(cookieparser());
 app.use("/",viewuser);
 
 app.use("/auth/",authuser);
+app.use("/upload/",hashing);
 
 app.listen(5002,()=>{
 
