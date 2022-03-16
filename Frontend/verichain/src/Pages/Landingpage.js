@@ -146,7 +146,7 @@ If you are a student, all you have to do is log in using your official email id,
 
 
         
-      <Card href={pdf.pdflink} id="card" org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px",visibility:"hidden"}}/>
         
         
            
@@ -239,7 +239,7 @@ If you are a student, all you have to do is log in using your official email id,
 
 
         
-      <Card href={pdf.pdflink} id="card" org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"70%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"70%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
         
         
   
@@ -284,7 +284,7 @@ const Card=(props)=>{
 return(
 
   
-  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
+  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" id="card" style={props.style}>
       <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
       <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>{name}</a>
       <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
