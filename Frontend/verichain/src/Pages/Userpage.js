@@ -15,6 +15,7 @@ const Userpage =()=> {
     const {user,setUser}=useContext(UserContext);
     const navigate=useNavigate();
     const [tog,setTog]=useState(false);
+    const [message,setMessage]=useState("");
 
     const vari=user;
     
@@ -56,7 +57,9 @@ const Userpage =()=> {
             email:emails,
             password:passwords,
         }).then(async(res)=>{
-            console.log(res);
+            console.log(res.data.data);
+            setMessage(res.data.data);
+            console.log("error data");
            await setUserContext();
         });   
         
@@ -68,6 +71,7 @@ const Userpage =()=> {
     const Signout=()=>{
         axios.get("/auth/signout").then(async(res)=>{
             await setUserContext();
+            setMessage("Logged out");
         })
     }
    
@@ -122,9 +126,9 @@ const Userpage =()=> {
          
   
        
-          <div className="details py-2 " style={{maxWidth:"80%"}}>
+          <div className="details py-2 " style={{maxWidth:"60%"}}>
             <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+            Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
             </p>
           </div>
   
@@ -147,7 +151,7 @@ const Userpage =()=> {
     
          {pdf.map((element)=>(
 
-            <Card href={element.pdflink} name={element.org} style={{backgroundColor:"#2A628F", width:"20%",height:"20%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+            <Card href={element.pdflink} name={element.filename} org={element.org_email} hash={element.hash} style={{backgroundColor:"#2A628F", width:"20%",height:"20%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
 
 
         ))}
@@ -181,7 +185,7 @@ const Userpage =()=> {
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
           <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
-            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Signin</p></a>
+            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Student</p></a>
             <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Sign Up</div>
           </div>
         </nav>
@@ -196,11 +200,13 @@ const Userpage =()=> {
             
              <div className="id position-relative px-3" style={{width:"60%"}}>
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-                <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+                <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email ID" aria-label="default input example"></input>
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
 
-                <div className="btn btn-md mt-3 text-white" onClick={Login} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
+
 
             </div>
         </div>
@@ -267,7 +273,7 @@ const Userpage =()=> {
        
           <div className="details py-2 " style={{maxWidth:"80%"}}>
             <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+            Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
             </p>
           </div>
   
@@ -288,7 +294,7 @@ const Userpage =()=> {
         <div className="filelist d-flex flex-wrap position-relative flex-column align-items-center justify-content-around py-3">  
 
         {pdf.map((element)=>(
-            <Card href={element.pdflink} name={element.org}  style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+            <Card href={element.pdflink} name={element.filename} org={element.org} ids={element._id} hash={element.hash}  style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
 
         ))}
   
@@ -327,7 +333,7 @@ const Userpage =()=> {
             </div>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
-            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in</p></a>
+            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Student</p></a>
             <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
           </div>
         </nav>
@@ -340,12 +346,14 @@ const Userpage =()=> {
           
           <div className="id position-relative px-3">
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-            <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email ID" aria-label="default input example"></input>
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+            <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
            
 
-           <div className="btn btn-md mt-3 text-white" onClick={Login} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
+
+            <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
 
           </div>
         </div>
@@ -377,14 +385,30 @@ const Userpage =()=> {
   
   const Card=(props)=>{
       console.log(props);
-      const {name,href}=props;
+      const {name,href,hash,org}=props;
       console.log(name);
+      
+      const [show,setShow]=useState(true);
+
+      const Show=()=>{
+        setShow(!show);
+        if(show==true)
+        {
+          document.getElementById(hash).style.fontSize="1.0rem";
+        }
+        else{
+          document.getElementById(hash).style.fontSize="0.0rem";
+        }
+
+      }
     return(
   
-      <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
+      <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
       <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-      <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none"}}>{name}</a>
-      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>org name</p>
+      <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>{name}</a>
+      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
+      <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
+      <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
      
       
 

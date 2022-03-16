@@ -9,13 +9,14 @@ const hashing=require('./hashing');
 
 const viewuser=require('./viewuser');
 
-mongoose.connect("mongodb://localhost:27017/reactnode",{useUnifiedTopology: true},(err,client)=>{
+mongoose.connect("mongodb://0.0.0.0:27017/reactnode",{useUnifiedTopology: true},(err,client)=>{
     if(!err)
     {
         console.log("connection to database successfull")
 
     }
     else{
+        console.log(err);
         console.log("error connecting to database")
     }
 }

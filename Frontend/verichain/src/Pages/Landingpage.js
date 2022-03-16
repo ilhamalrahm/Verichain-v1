@@ -105,7 +105,11 @@ if(isDesktopOrLaptop)
      
         <div className="details py-5 " style={{maxWidth:"40%"}}>
           <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+          Welcome to Verichain
+We help you keep your certificates and connect them with a unique token that proves their authenticity.
+
+ If you are an organization, you must enter the connected email id and upload the certificates.
+If you are a student, all you have to do is log in using your official email id, and that's it! You will get a list of all of your certificates.
           </p>
         </div>
 
@@ -142,7 +146,7 @@ if(isDesktopOrLaptop)
 
 
         
-      <Card href={pdf.pdflink} id="card" org={pdf.org} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+      <Card href={pdf.pdflink} id="card" org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
         
         
            
@@ -205,7 +209,11 @@ else{
       
           <div className="details py-5 " style={{maxWidth:"95%"}}>
             <p className="work text-white text-wrap" style={{fontSize:"1.2rem"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+            Welcome to Verichain
+We help you keep your certificates and connect them with a unique token that proves their authenticity.
+
+ If you are an organization, you must enter the connected email id and upload the certificates.
+If you are a student, all you have to do is log in using your official email id, and that's it! You will get a list of all of your certificates.
             </p>
          </div>
 
@@ -220,13 +228,25 @@ else{
           <img src={Chain} className="position-relative p-2" alt="" style={{height:"30%",width:"30%"}} />
           <div className="id position-relative px-3">
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Unique Id:</p>
-            <input className="form-control px-2 py-3 " style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " style={{width:"100%"}} id="hash" type="text" placeholder="Unique ID" aria-label="default input example"></input>
 
-           <div className="btn btn-md mt-3 text-white" style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Search</div>
+           <div className="btn btn-md mt-3 text-white" onClick={fetchPdf} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Search</div>
 
           </div>
         </div>
       </div>
+      <div className="filelist d-flex flex-wrap position-relative flex-column my-5 align-items-center justify-content-around py-3">  
+
+
+        
+      <Card href={pdf.pdflink} id="card" org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"70%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+        
+        
+  
+  
+  
+  
+        </div>
            
       </div>
 
@@ -246,15 +266,32 @@ else{
 
 const Card=(props)=>{
   console.log(props);
-  const {name,href,org}=props;
+  const {name,href,org,hash,stud}=props;
   console.log(name);
+  const [show,setShow]=useState(true);
+
+      const Show=()=>{
+        setShow(!show);
+        if(show==true)
+        {
+          document.getElementById(hash).style.fontSize="1.0rem";
+        }
+        else{
+          document.getElementById(hash).style.fontSize="0.0rem";
+        }
+
+      }
 return(
 
   
-  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column justify-content-center align-items-center"  id="card" style={props.style}>
-  <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-  <a href={href} className="pdfname text-white" style={{fontSize:"2.7rem",textDecoration:"none"}}>{name}</a>
-  <p className="pdfname py-2 text-white" style={{fontSize:"2.0rem"}}>{org}</p>
+  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
+      <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
+      <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>{name}</a>
+      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
+      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{stud}</p>
+      <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
+      <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
+  
  
   
 

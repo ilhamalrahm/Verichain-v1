@@ -24,6 +24,8 @@ const Orgpage = () => {
     const navigate=useNavigate();
 
     const [tog,setTog]=useState(false);
+    const [refresh,setRefresh]=useState(false);
+    const [message,setMessage]=useState("");
 
   
 
@@ -44,7 +46,9 @@ const Orgpage = () => {
           email:emails,
           password:passwords,
       }).then(async(res)=>{
-          console.log(res);
+        console.log(res.data.data);
+        setMessage(res.data.data);
+        console.log("error data");
          await setUserContext();
       });   
       
@@ -87,9 +91,10 @@ const Orgpage = () => {
       }
     }
         
-    ,[org]);
+    ,[org,refresh]);
 
     const Upload=(val)=>{
+      setRefresh(!refresh);
       const stud_emails=document.getElementById('stud_email').value;
       console.log(stud_emails);
       const pdflinks=document.getElementById('pdflink').value;
@@ -174,7 +179,8 @@ if(isDesktopOrLaptop)
      
         <div className="details py-2 " style={{maxWidth:"80%"}}>
           <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+          Handling certificates after any event can be a real headache, and we make it a piece of cake.
+You have to upload the certificate below and add the email id linked with the certificate. The certificates will show up in their account whenever the user logs in using the same email id. This provides you with a hassle-free way of distributing certificates provides you with a token of authenticity, and ensures that no one can forfeit your certificates.
           </p>
         </div>
 
@@ -225,7 +231,7 @@ if(isDesktopOrLaptop)
       <div className="filelist d-flex flex-wrap flex-row align-items-center justify-content-around py-3">  
 
       {pdf.map((element)=>(
-            <Card hash={element.hash} href={element.pdflink} name={element.org} email={element.org_email} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+            <Card hash={element.hash} href={element.pdflink} name={element.filename} email={element.stud_email} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
 
         ))}
 
@@ -254,8 +260,8 @@ if(isDesktopOrLaptop)
           <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
             <div className="container-fluid justify-content-center position-relative">
             <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
-              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Signin</p></a>
-              <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Sign Up</div>
+              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Org</p></a>
+              <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Sign up</div>
             </div>
           </nav>
     
@@ -269,11 +275,12 @@ if(isDesktopOrLaptop)
               
                <div className="id position-relative px-3" style={{width:"60%"}}>
                   <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-                  <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+                  <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email Id" aria-label="default input example"></input>
                   <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-                  <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+                  <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
   
-                  <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                  <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                  <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
   
               </div>
           </div>
@@ -327,7 +334,8 @@ else{
      
         <div className="details py-2 " style={{maxWidth:"80%"}}>
           <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus facilisis feugiat quisque sagittis quis eget pharetra volutpat. Id ante erat sit velit rutrum. Erat scelerisque mi a ornare amet cras. Egestas pellentesque viverra sociis viverra interdum vitae quam sit elit. Tortor, pretium vitae etiam placerat ut volutpat pharetra ultricies. Augue nulla iaculis purus sit venenatis. Fusce vitae ut morbi volutpat neque lorem imperdiet.
+          Handling certificates after any event can be a real headache, and we make it a piece of cake.
+You have to upload the certificate below and add the email id linked with the certificate. The certificates will show up in their account whenever the user logs in using the same email id. This provides you with a hassle-free way of distributing certificates provides you with a token of authenticity, and ensures that no one can forfeit your certificates.
           </p>
         </div>
 
@@ -384,7 +392,7 @@ else{
       {pdf.map((element)=>(
         
        
-        <Card hash={element.hash} href={element.hash} email={element.org_email} name={element.org} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
+        <Card hash={element.hash} href={element.pdflink} email={element.stud_email} name={element.filename} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
 
            
 
@@ -420,7 +428,7 @@ else{
             </div>
           <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
             <div className="container-fluid justify-content-center position-relative">
-              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in</p></a>
+              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Org</p></a>
               <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
             </div>
           </nav>
@@ -433,12 +441,13 @@ else{
             
             <div className="id position-relative px-3">
               <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-              <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+              <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email Id" aria-label="default input example"></input>
               <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-              <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+              <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
              
   
-             <div className="btn btn-md mt-3 text-white" onClick={Login} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
+             <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
+             <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
   
             </div>
           </div>
@@ -463,19 +472,31 @@ else{
 };
 
 };
-const Card=({href,name,hash,style,email})=>{
-  console.log(href);
+const Card=(props)=>{
   
-  console.log(name);
-  console.log(hash)
+  const {name,href,hash,email}=props;
+ 
+  const [show,setShow]=useState(true);
+
+  const Show=()=>{
+    setShow(!show);
+    if(show==true)
+    {
+      document.getElementById(hash).style.fontSize="1.0rem";
+    }
+    else{
+      document.getElementById(hash).style.fontSize="0.0rem";
+    }
+
+  }
 return(
 
-  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column justify-content-center align-items-center" style={style}>
+  <div className="filecard p-3 mx-2 my-3 text-wrap position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
   <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-  <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none"}}>{email}</a>
-  <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{name}</p>
- 
-  
+  <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none"}}>{name}</a>
+  <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{email}</p>
+      <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
+      <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
 
 
    

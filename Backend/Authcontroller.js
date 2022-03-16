@@ -20,6 +20,7 @@ exports.signIn_stud=async(req,res,next)=>{
    if(!user || password!=user.password)
    {
        console.log("username or password incorrect");
+       res.status(200).json({success:false,data:"Please recheck your credentials!"});
        
    }
    else{
@@ -42,6 +43,7 @@ exports.signIn_org=async(req,res,next)=>{
     if(!user || password!=user.password)
     {
         console.log("username or password incorrect");
+        res.status(200).json({success:false,data:"Please recheck your credentials!"});
         
     }
     else{
@@ -96,7 +98,7 @@ const createusertoken=async(user,code,req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None"
-    }).status(200).json({success:true});
+    }).status(200).json({success:true,data:"Login successful!"});
 
     console.log("created token and sent");
 
@@ -194,9 +196,7 @@ exports.signUp_stud= (req,res,next)=>{
     const {name,email,password}=req.body
 
     console.log(req.body);
-    
-    
-
+  
     const newuser = new User({
         name:name,
         password:password,
@@ -209,14 +209,16 @@ exports.signUp_stud= (req,res,next)=>{
         if(error)
         {
             console.log("error signing up")
+            res.status(200).json({success:false,data:"Failed to signup, The user maybe already existing"});
         }
         else
         {
             console.log("signup complete")
+            res.status(200).json({success:true});
             console.log(doc);
         }
 
-        res.status(200).json({success:true});
+        
         
     });
     
@@ -241,6 +243,7 @@ exports.signUp_org= async(req,res,next)=>{
         if(error)
         {
             console.log("error signing up")
+            res.status(200).json({success:false,data:"Failed to signup, The user maybe already existing"});
         }
         else
         {

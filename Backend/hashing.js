@@ -3,9 +3,21 @@ const app = express();
 const mongoose = require("mongoose");
 const Certificate=require('./schemas/certificateSchema');
 const sha256=require("sha256");
+const nodemailer=require("nodemailer");
 
 
 const router = express.Router();
+
+const transporter=nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:"username",
+        pass:"password"
+    }
+});
+
+
+
 
 function hashing(linkedemail, pdf, orgemail) {
     var x = linkedemail + pdf + orgemail;
@@ -19,6 +31,7 @@ function hashing(linkedemail, pdf, orgemail) {
 router.post("/hashing", (req, res) => {
 
     const {org_email,filename,stud_email,org,pdflink}=req.body;
+   
     console.log("hash running");
 
     // hash here
@@ -42,6 +55,22 @@ router.post("/hashing", (req, res) => {
     })
     certi.save().then(() => {
         console.log("Saved to DB")
+        var mailOptions={
+            from:"ilhamalrahm@gmail.com",
+            to:stud_email,
+            subject:"Certificate Recieved",
+            text:"We recieved a certificate on verichain from "+org+" Login to your account with learner id to check!"
+        }
+        transporter.sendMail(mailOptions,(err,info)=>{
+            if(err)
+            {
+                console.log("error sending mail");
+                console.log(err);
+            }
+            else{
+                console.log("mail sent");
+            }
+        });
         res.status(200).json({success:true,data:"Uploaded successfully"});
     })
 });
