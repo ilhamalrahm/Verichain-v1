@@ -29,10 +29,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieparser());
 
-app.use("/",viewuser);
+app.use("/api/",viewuser);
 
-app.use("/auth/",authuser);
-app.use("/upload/",hashing);
+app.use("/api/auth/",authuser);
+app.use("/api/upload/",hashing);
 
 app.listen(5000,()=>{
 
