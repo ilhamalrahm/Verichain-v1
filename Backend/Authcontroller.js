@@ -74,7 +74,8 @@ exports.signOut=async(req,res)=>{
         expiresIn:d,
         httpOnly:true,
         secure:true,
-        sameSite:"None"
+        sameSite:"None",
+        domain:"http://3.6.100.244/"
     }).status(200).json({success:true,data:"Logged out!"});
 
 }
@@ -109,7 +110,8 @@ const createusertoken=async(user,code,req,res)=>{
         expiresIn:d,
         httpOnly:true,
         secure:true,
-        sameSite:"None"
+        sameSite:"None",
+        domain:"http://3.6.100.244/"
     }).status(200).json({success:true,data:"Login successful!"});
 
     console.log("created token and sent");
