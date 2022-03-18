@@ -21,7 +21,7 @@ const Signin_user=()=>{
 
 
     const setUserContext=()=>{
-        axios.get("/api/users_stud").then((res)=>{
+        axios.get("/users_stud").then((res)=>{
             setUser(res.data.currentuser);
             console.log("current user set");
             navigate("/user");
@@ -36,7 +36,7 @@ const Signin_user=()=>{
         const passwords=document.getElementById("password").value
         console.log(names + passwords);
 
-        axios.post("/api/auth/signin_stud",{
+        axios.post("/auth/signin_stud",{
             name:names,
             password:passwords,
         }).then(async(res)=>{
