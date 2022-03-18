@@ -7,6 +7,7 @@ import { UserContext } from '../UserContext';
 import axios from 'axios';
 import Mail from "./Images/Mail.svg"
 const Upload=require('./Images/Upload.svg')
+const File=require("./Images/File.svg");
 
 
 
@@ -70,8 +71,9 @@ const Userpage =()=> {
 
     const Signout=()=>{
         axios.get("/auth/signout").then(async(res)=>{
+            setMessage(res.data.data);
             await setUserContext();
-            setMessage("Logged out");
+            
         })
     }
    
@@ -110,7 +112,7 @@ const Userpage =()=> {
       if(user){
   
     return (
-      <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
+      <section className="main" style={{backgroundColor:"#16324F", height:"100vh"}}>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
           <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
@@ -127,7 +129,7 @@ const Userpage =()=> {
   
        
           <div className="details py-2 " style={{maxWidth:"60%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
+            <p className="work text-white text-wrap" style={{fontSize:"1.9rem"}}>
             Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
             </p>
           </div>
@@ -143,7 +145,7 @@ const Userpage =()=> {
   
   
         <div className="files py-5 text-start d-flex justify-content-start">
-          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.5rem"}}>Files linked to your Learner Id:</p>
+          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.2rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
         </div>
   
         <div className="filelist d-flex flex-wrap flex-row align-items-center justify-content-around py-3">  
@@ -165,11 +167,6 @@ const Userpage =()=> {
        
   
     
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
   
   
   
@@ -202,7 +199,7 @@ const Userpage =()=> {
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
                 <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email ID" aria-label="default input example"></input>
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
 
                 <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
                 <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
@@ -272,7 +269,7 @@ const Userpage =()=> {
   
        
           <div className="details py-2 " style={{maxWidth:"80%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
+            <p className="work text-white text-wrap" style={{fontSize:"1.5rem",fontStyle:"oblique"}}>
             Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
             </p>
           </div>
@@ -288,7 +285,7 @@ const Userpage =()=> {
   
   
         <div className="files py-5 text-start d-flex justify-content-start">
-          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.5rem"}}>Files linked to your Learner Id:</p>
+          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.2rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
         </div>
   
         <div className="filelist d-flex flex-wrap position-relative flex-column align-items-center justify-content-around py-3">  
@@ -348,7 +345,7 @@ const Userpage =()=> {
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
             <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email ID" aria-label="default input example"></input>
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
             <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
            
 
@@ -404,8 +401,10 @@ const Userpage =()=> {
     return(
   
       <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
-      <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-      <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>{name}</a>
+     
+      <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
+      <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
+      {name}</a>
       <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>

@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const Pdf=require('./schemas/PdfSchema');
 const Organisation=require('./schemas/organizationSchema');
 const Certificate=require('./schemas/certificateSchema');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 
 exports.signIn_stud=async(req,res,next)=>{
@@ -17,7 +19,8 @@ exports.signIn_stud=async(req,res,next)=>{
 
    
    const user= await User.findOne({email:email}).select("+password");
-   if(!user || password!=user.password)
+   const match= await bcrypt.compare(password,user.password)
+   if(!user || !match)
    {
        console.log("username or password incorrect");
        res.status(200).json({success:false,data:"Please recheck your credentials!"});
@@ -40,7 +43,8 @@ exports.signIn_org=async(req,res,next)=>{
  
     
     const user= await Organisation.findOne({email:email}).select("+password");
-    if(!user || password!=user.password)
+    const match= await bcrypt.compare(password,user.password)
+    if(!user || !match)
     {
         console.log("username or password incorrect");
         res.status(200).json({success:false,data:"Please recheck your credentials!"});
@@ -63,7 +67,7 @@ exports.signOut=async(req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None"
-    }).status(200).send("sent cookie with token");
+    }).status(200).json({success:true,data:"Logged out!"});
 
 }
 
@@ -191,37 +195,50 @@ exports.checkUser_org=async(req,res,next)=>{
 }
 //signup part
 
-exports.signUp_stud= (req,res,next)=>{
+exports.signUp_stud= async(req,res,next)=>{
     console.log("signup detected");
     const {name,email,password}=req.body
 
     console.log(req.body);
-  
-    const newuser = new User({
-        name:name,
-        password:password,
-        email:email
-       
 
-    });
+    const exists= await User.findOne({email:email});
 
-     newuser.save((error,doc)=>{
-        if(error)
-        {
-            console.log("error signing up")
-            res.status(200).json({success:false,data:"Failed to signup, The user maybe already existing"});
-        }
-        else
-        {
-            console.log("signup complete")
-            res.status(200).json({success:true});
-            console.log(doc);
-        }
-
-        
-        
+  if(!exists)
+  {
+    bcrypt.hash(password, saltRounds).then(async(hash)=> {
+        // Store hash in your password DB.
+        const newuser = new User({
+            name:name,
+            password:hash,
+            email:email
+           
+    
+        });
+    
+         newuser.save((error,doc)=>{
+            if(error)
+            {
+                console.log("error signing up")
+                res.status(200).json({success:false,data:"Error occured!"});
+            }
+            else
+            {
+                console.log("signup complete")
+                res.status(200).json({success:true,data:"Signup Successfull!"});
+                console.log(doc);
+            }
+    
+            
+            
+        });
     });
     
+    
+}
+else{
+    console.log("user already exists");
+    res.status(200).json({success:false,data:"Account already exists for this Email!"});
+}
 }
 
 exports.signUp_org= async(req,res,next)=>{
@@ -229,31 +246,43 @@ exports.signUp_org= async(req,res,next)=>{
     const {name,email,password}=req.body;
 
     console.log(req.body);
+    const exists= await Organisation.findOne({email:email});
     
-    
-
-    const newuser = Organisation({
-        name:name,
-        email:email,
-        password:password,  
-
-    });
-
-    await newuser.save((error,doc)=>{
-        if(error)
-        {
-            console.log("error signing up")
-            res.status(200).json({success:false,data:"Failed to signup, The user maybe already existing"});
-        }
-        else
-        {
-            console.log("signup complete")
-        }
-
-        res.status(200).redirect('/signin');
+    if(!exists)
+    {
+        bcrypt.hash(password, saltRounds).then(async(hash)=> {
+            // Store hash in your password DB.
+            const newuser = Organisation({
+                name:name,
+                email:email,
+                password:hash,  
         
-    });
+            });
+        
+            await newuser.save((error,doc)=>{
+                if(error)
+                {
+                    console.log("error signing up")
+                    res.status(200).json({success:false,data:"Error Occurred!"});
+                }
+                else
+                {
+                    console.log("signup complete")
+                    res.status(200).json({success:true,data:"Signup Successful!"});
+                }
+        
+                
+                
+            });
+        });
+
     
+    
+}
+else{
+    console.log("user already exists");
+    res.status(200).json({success:false,data:"Account already exists for this Email!"});
+}
 }
 
 

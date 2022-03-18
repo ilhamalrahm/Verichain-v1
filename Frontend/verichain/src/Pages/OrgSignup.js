@@ -12,6 +12,7 @@ const UserSignUp = () => {
   const {user,setUser}=useContext(UserContext);
   const [tog,setTog]=useState(false);
   const {org,setOrg}=useContext(UserContext);
+  const [message,setMessage]=useState("");
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)'
   });
@@ -40,8 +41,23 @@ const UserSignUp = () => {
       console.log("helo signup")
       const email=document.getElementById('email').value;
       const password=document.getElementById('password').value;
-      await axios.post('/auth/signup_org',{name,password,email})
-      navigate('/signin');
+      if(password.length<8)
+      {
+        alert("Password should be more than 8 characters long");
+      }
+      else{
+      await axios.post('/auth/signup_org',{name,password,email}).then((res)=>{
+        if(res.data.success==false)
+        {
+          setMessage(res.data.data);
+        }
+        else{
+          setMessage(res.data.data);
+          navigate('/company');
+        }
+      })
+    }
+      
   }
 
   if(isDesktopOrLaptop){
@@ -70,11 +86,14 @@ const UserSignUp = () => {
              <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Name:</p>
                 <input className="form-control px-2 py-3 " id="name" style={{width:"100%"}} type="text" placeholder="Name" aria-label="default input example"></input>
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-                <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email" aria-label="default input example"></input>
+                <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="email" placeholder="Email" aria-label="default input example"></input>
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+                <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
 
-                <div className="btn btn-md signup mt-3 text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                <div className="btn btn-md signup mt-3 text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign Up</div>
+                <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
+  
+                
 
             </div>
         </div>
@@ -111,7 +130,8 @@ const UserSignUp = () => {
             <section className="main position-absolute" style={{backgroundColor:"#16324F", height:"100%", width:"100%"}}>
             <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
               <div className="container-fluid justify-content-center position-relative">
-                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Signin</p></a>
+              <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
+                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign Up as Org</p></a>
               </div>
             </nav>
       
@@ -182,11 +202,11 @@ else
           
           <div className="id position-relative px-3">
           <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Name:</p>
-            <input className="form-control px-2 py-3 " id="name" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="name" style={{width:"100%"}} type="text" placeholder="Name" aria-label="default input example"></input>
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
-            <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="email" placeholder="Email" aria-label="default input example"></input>
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
+            <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
            
 
            <div className="btn btn-md mt-3 signup text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
@@ -230,9 +250,16 @@ else
     else{
         return(
             <section className="main position-absolute" style={{backgroundColor:"#16324F", height:"100%", width:"100%"}}>
+             <div className="sidebar position-absolute" id="sidebar" style={{backgroundColor:"#2A628F",borderRadius:"10px",zIndex:"100", visibility:"hidden",right:"0%",height:"100vh",width:"40%"}}>
+       <div className="btn btn-close position-absolute text-white" onClick={Toggle} style={{left:"3%",top:"1%", backgroundColor:"#3E92CC"}}></div>
+       <div className="btn position-absolute text-white" onClick={Home} style={{left:"15%",top:"8%", backgroundColor:"#3E92CC",width:"70%"}}>Home</div>
+      
+
+            </div>
             <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
               <div className="container-fluid justify-content-center position-relative">
-                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Organisation</p></a>
+                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign Up as Org</p></a>
+                <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
               </div>
             </nav>
       
@@ -245,7 +272,7 @@ else
            
               <div className="details py-2 " style={{maxWidth:"80%"}}>
                 <p className="work text-white text-wrap" style={{fontSize:"2.5rem"}}>
-               Sorry, you are not Signed in. Please Sign in
+               Sorry, Please log out to Sign Up!
                 </p>
               </div>
       

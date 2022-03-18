@@ -8,11 +8,9 @@ const Certificate = new Schema({
     pdflink: String,
     hash: {
         type:String,
-        unique:true,
     },
     org: String
 })
 
-Certificate.plugin(uniqueValidator);
 
 module.exports = mongoose.model('certificate', Certificate);

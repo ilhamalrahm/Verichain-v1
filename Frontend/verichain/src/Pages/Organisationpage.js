@@ -11,10 +11,12 @@ import { useMediaQuery } from 'react-responsive';
 import Try from "./Images/Try.svg";
 import Chain from "./Images/chain.svg";
 import Mail from "./Images/Mail.svg";
+import File from "./Images/File.svg";
 import Uploads from  "./Images/Upload.svg";
 import axios from "axios";
 import { useCheckOrg } from "../useCheckOrg";
 import Signin_org from "./OrgSignin";
+
 // import { sha256 } from "js-sha256";
 
 const Orgpage = () => {
@@ -26,6 +28,7 @@ const Orgpage = () => {
     const [tog,setTog]=useState(false);
     const [refresh,setRefresh]=useState(false);
     const [message,setMessage]=useState("");
+    const [docstatus,setDocstatus]=useState("");
 
   
 
@@ -59,11 +62,42 @@ const Orgpage = () => {
 
     const Signout=()=>{
         axios.get("/auth/signout").then(async(res)=>{
+          setMessage(res.data.data);
             await setUserContext();
         })
     }
     const Navigate=()=>{
       navigate('/signup_org');
+    }
+
+    const Upload=async(val)=>{
+      
+      const stud_emails=document.getElementById('stud_email').value;
+      console.log(stud_emails);
+      const pdflinks=document.getElementById('pdflink').value;
+      const filenames=document.getElementById("filename").value;
+      console.log("in upload")
+      setDocstatus("Uploading...")
+      
+      await axios.post("/upload/hashing",{
+          org_email:val.email,
+          org:val.name,
+          filename:filenames,
+          stud_email:stud_emails,
+          pdflink:pdflinks
+
+      }).then((res)=>{
+        if(res.data.success==true)
+        {
+          document.getElementById("docstatus").style.color="green";
+          setDocstatus(res.data.data);
+        }
+        else{
+          document.getElementById("docstatus").style.color="red";
+          setDocstatus(res.data.data);
+        }
+      });
+      setRefresh(!refresh);
     }
    
 
@@ -93,23 +127,7 @@ const Orgpage = () => {
         
     ,[org,refresh]);
 
-    const Upload=(val)=>{
-      setRefresh(!refresh);
-      const stud_emails=document.getElementById('stud_email').value;
-      console.log(stud_emails);
-      const pdflinks=document.getElementById('pdflink').value;
-      const filenames=document.getElementById("filename").value;
-      console.log("in upload")
-      
-      axios.post("/upload/hashing",{
-          org_email:val.email,
-          org:val.name,
-          filename:filenames,
-          stud_email:stud_emails,
-          pdflink:pdflinks
-
-      });
-    }
+    
 
 
   
@@ -199,7 +217,7 @@ You have to upload the certificate below and add the email id linked with the ce
           </div>
         </div>
         <div className="inner position-relative pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Mail} className="position-relative p-0" alt="" style={{height:"60%",width:"60%"}} />
+          <img src={Chain} className="position-relative p-0" alt="" style={{height:"60%",width:"60%"}} />
           <div className="id position-relative px-2">
             <p className="id text-white text-nowrap"  style={{fontWeight:"bolder", fontSize:"2.0rem"}}>File name:</p>
             <input className="form-control px-3 py-2 " id="filename" style={{width:"100%",backgroundColor:"#94C8EC",}} type="text" placeholder="File Name" aria-label="default input example"></input>
@@ -222,6 +240,7 @@ You have to upload the certificate below and add the email id linked with the ce
       </div>
 
       <div className="btn btn-md mt-3 text-white" onClick={()=>Upload(org)} style={{backgroundColor:"#2A628F",borderRadius:"30px",width:"15%",fontSize:"1.5rem", boxShadow: "0px 2px 2px black"}}>Upload</div>
+      <p className="id docstatus py-2" id="docstatus" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{docstatus}</p>
 
 
       <div className="files py-5 text-start d-flex justify-content-start">
@@ -231,7 +250,7 @@ You have to upload the certificate below and add the email id linked with the ce
       <div className="filelist d-flex flex-wrap flex-row align-items-center justify-content-around py-3">  
 
       {pdf.map((element)=>(
-            <Card hash={element.hash} href={element.pdflink} name={element.filename} email={element.stud_email} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+            <Card hash={element.hash} href={element.pdflink} name={element.filename} email={element.stud_email} style={{backgroundColor:"#2A628F", width:"20%",height:"20%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
 
         ))}
 
@@ -277,7 +296,7 @@ You have to upload the certificate below and add the email id linked with the ce
                   <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
                   <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email Id" aria-label="default input example"></input>
                   <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-                  <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+                  <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
   
                   <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
                   <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
@@ -443,7 +462,7 @@ You have to upload the certificate below and add the email id linked with the ce
               <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
               <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email Id" aria-label="default input example"></input>
               <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
-              <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="text" placeholder="Password" aria-label="default input example"></input>
+              <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
              
   
              <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
@@ -492,8 +511,10 @@ const Card=(props)=>{
 return(
 
   <div className="filecard p-3 mx-2 my-3 text-wrap position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
-  <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-  <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none"}}>{name}</a>
+  
+  <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
+  <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
+  {name}</a>
   <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{email}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>

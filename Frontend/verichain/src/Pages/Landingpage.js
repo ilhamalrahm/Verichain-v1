@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import Mail from './Images/Mail.svg';
 import Try from "./Images/Try.svg";
+import File from "./Images/File.svg";
 import Chain from "./Images/chain.svg";
 import axios from "axios";
 
@@ -146,17 +147,9 @@ If you are a student, all you have to do is log in using your official email id,
 
 
         
-      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px",visibility:"hidden"}}/>
+      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"30%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px",visibility:"hidden"}}/>
         
         
-           
-
-        
-  
-    
-        
-  
-  
   
   
         </div>
@@ -239,7 +232,7 @@ If you are a student, all you have to do is log in using your official email id,
 
 
         
-      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"70%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+      <Card href={pdf.pdflink}  org={pdf.org} stud={pdf.stud_email} hash={pdf.hash} name={pdf.filename} style={{backgroundColor:"#2A628F",visibility:"hidden", width:"70%",height:"40%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
         
         
   
@@ -285,8 +278,10 @@ return(
 
   
   <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" id="card" style={props.style}>
-      <img src={Mail} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
-      <a href={href} className="pdfname text-white" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>{name}</a>
+     
+      <a href={href} className="pdfname text-white mx-5" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
+      <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
+      {name}</a>
       <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
       <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{stud}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>

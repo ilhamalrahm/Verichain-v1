@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Certificate=require('./schemas/certificateSchema');
 const sha256=require("sha256");
 const nodemailer=require("nodemailer");
+const { restart } = require("nodemon");
 
 
 const router = express.Router();
@@ -11,12 +12,10 @@ const router = express.Router();
 const transporter=nodemailer.createTransport({
     service:'gmail',
     auth:{
-        user:"username",
-        pass:"password"
+        user:"theverichain@gmail.com",
+        pass:"verichain2022"
     }
 });
-
-
 
 
 function hashing(linkedemail, pdf, orgemail) {
@@ -28,11 +27,12 @@ function hashing(linkedemail, pdf, orgemail) {
     console.log(Hash);
 }
 
-router.post("/hashing", (req, res) => {
+router.post("/hashing",async(req, res) => {
 
     const {org_email,filename,stud_email,org,pdflink}=req.body;
    
     console.log("hash running");
+    
 
     // hash here
     var x = stud_email+ pdflink+ org_email;
@@ -42,9 +42,12 @@ router.post("/hashing", (req, res) => {
     // hash checking
 
     console.log(Hash);
+   const exists=await Certificate.findOne({hash:Hash})
+    console.log(exists+" exist here")
 
     // save it to mongo3
-
+    if(!exists)
+    {
     const certi = new Certificate({
         filename:filename,
         org_email: org_email,
@@ -53,26 +56,43 @@ router.post("/hashing", (req, res) => {
         hash: Hash,
         org:org
     })
-    certi.save().then(() => {
-        console.log("Saved to DB")
-        var mailOptions={
-            from:"ilhamalrahm@gmail.com",
-            to:stud_email,
-            subject:"Certificate Recieved",
-            text:"We recieved a certificate on verichain from "+org+" Login to your account with learner id to check!"
-        }
-        transporter.sendMail(mailOptions,(err,info)=>{
-            if(err)
-            {
-                console.log("error sending mail");
-                console.log(err);
+    try
+    {
+        certi.save().then(() => {
+            console.log("Saved to DB")
+            var mailOptions={
+                from:"ilhamalrahm@gmail.com",
+                to:stud_email,
+                subject:"Certificate Recieved",
+                text:"We recieved a certificate on verichain from "+org+". Login to your account with learner id to check!"
             }
-            else{
-                console.log("mail sent");
-            }
-        });
-        res.status(200).json({success:true,data:"Uploaded successfully"});
-    })
+            transporter.sendMail(mailOptions,(err,info)=>{
+                if(err)
+                {
+                    console.log("error sending mail");
+                    console.log(err);
+                    res.status(200).json({success:true,data:"Uploaded successfully but mail not sent due to some error!"});
+                }
+                else{
+                    console.log("mail sent");
+                    res.status(200).json({success:true,data:"Uploaded successfully and mail sent!"});
+                }
+            });
+            // res.status(200).json({success:true,data:"Document uploaded Successfully!"})
+        })
+    }
+    catch(er)
+    {
+        console.log("Error occured");
+        res.status(201).json({success:false,data:"Error occured"});
+    }
+}
+else{
+    console.log("File already exists");
+        res.status(201).json({success:false,data:"Document already exists! "})
+
+}
+   
 });
 
 
