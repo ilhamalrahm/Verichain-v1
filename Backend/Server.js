@@ -34,7 +34,7 @@ app.use("/",viewuser);
 app.use("/auth/",authuser);
 app.use("/upload/",hashing);
 
-app.listen(5002,()=>{
+app.listen(5000,()=>{
 
     console.log("backend is running");
 
