@@ -8,7 +8,7 @@ export const useCheckOrg=()=>{
     const [org,setOrg]=useState({});
     useEffect(()=>{
         const checkUser=async()=>{
-            axios.get("/users_org").then((res)=>{
+            axios.get("/api/users_org").then((res)=>{
                 setOrg(res.data.currentuser);
 
             }).catch(err=>{
