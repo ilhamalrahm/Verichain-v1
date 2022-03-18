@@ -33,7 +33,7 @@ const Orgpage = () => {
   
 
     const setUserContext=()=>{
-        axios.get("/users_org").then((res)=>{
+        axios.get("/api/users_org").then((res)=>{
             setOrg(res.data.currentuser);
             console.log("current user set");
             
@@ -45,7 +45,7 @@ const Orgpage = () => {
       const passwords=document.getElementById("password").value
       
 
-      axios.post("/auth/signin_org",{
+      axios.post("/api/auth/signin_org",{
           email:emails,
           password:passwords,
       }).then(async(res)=>{
@@ -61,7 +61,7 @@ const Orgpage = () => {
     const [pdf,setPdf]=useState([]);
 
     const Signout=()=>{
-        axios.get("/auth/signout").then(async(res)=>{
+        axios.get("/api/auth/signout").then(async(res)=>{
           setMessage(res.data.data);
             await setUserContext();
         })
@@ -79,7 +79,7 @@ const Orgpage = () => {
       console.log("in upload")
       setDocstatus("Uploading...")
       
-      await axios.post("/upload/hashing",{
+      await axios.post("/api/upload/hashing",{
           org_email:val.email,
           org:val.name,
           filename:filenames,
@@ -107,7 +107,7 @@ const Orgpage = () => {
 
           try{
        
-            axios.post("/pdf_org",{
+            axios.post("/api/pdf_org",{
                 owner:org.email
             }).then((res)=>{
                 // console.log(res.data[0].url);

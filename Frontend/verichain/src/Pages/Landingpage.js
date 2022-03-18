@@ -30,7 +30,7 @@ const Landing = () => {
     
     
     console.log(hashes)
-    axios.post("/upload/verify",{
+    axios.post("/api/upload/verify",{
       hash:hashes
     }).then((res)=>{
       console.log(res.data.success)

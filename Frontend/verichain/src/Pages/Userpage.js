@@ -23,7 +23,7 @@ const Userpage =()=> {
 
 
     const setUserContext=()=>{
-        axios.get("/users_stud").then((res)=>{
+        axios.get("/api/users_stud").then((res)=>{
             setUser(res.data.currentuser);
             console.log("current user set");
             
@@ -54,7 +54,7 @@ const Userpage =()=> {
         const passwords=document.getElementById("password").value
         
 
-        axios.post("/auth/signin_stud",{
+        axios.post("/api/auth/signin_stud",{
             email:emails,
             password:passwords,
         }).then(async(res)=>{
@@ -70,7 +70,7 @@ const Userpage =()=> {
     const [pdf,setPdf]=useState([]);
 
     const Signout=()=>{
-        axios.get("/auth/signout").then(async(res)=>{
+        axios.get("/api/auth/signout").then(async(res)=>{
             setMessage(res.data.data);
             await setUserContext();
             
@@ -82,7 +82,7 @@ const Userpage =()=> {
         console.log("useffect running");
         
         try{
-            axios.post("/pdf_stud",{
+            axios.post("/api/pdf_stud",{
                 owner:user.email
             }).then((res)=>{
                 setPdf(res.data);
