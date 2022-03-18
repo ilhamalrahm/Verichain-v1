@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import axios from 'axios';
 import Mail from "./Images/Mail.svg"
-const Upload=require('./Images/Upload.svg')
-const File=require("./Images/File.svg");
+import Upload from "./Images/Upload.svg";
+import File from "./Images/File.svg";
 
 
 
@@ -112,7 +112,7 @@ const Userpage =()=> {
       if(user){
   
     return (
-      <section className="main" style={{backgroundColor:"#16324F", height:"100vh"}}>
+      <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
           <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>

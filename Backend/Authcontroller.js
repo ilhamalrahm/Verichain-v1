@@ -16,10 +16,15 @@ exports.signIn_stud=async(req,res,next)=>{
    console.log("signin detected");
   console.log(email);
    console.log(password);
+   var match=null;
 
    
    const user= await User.findOne({email:email}).select("+password");
-   const match= await bcrypt.compare(password,user.password)
+   if(user)
+   {
+     match= await bcrypt.compare(password,user.password)
+   }
+   
    if(!user || !match)
    {
        console.log("username or password incorrect");
@@ -40,10 +45,13 @@ exports.signIn_org=async(req,res,next)=>{
     console.log("signin detected");
     
     console.log(password);
+    var match=null;
  
     
     const user= await Organisation.findOne({email:email}).select("+password");
-    const match= await bcrypt.compare(password,user.password)
+    if(user){
+    match= await bcrypt.compare(password,user.password)
+    }
     if(!user || !match)
     {
         console.log("username or password incorrect");

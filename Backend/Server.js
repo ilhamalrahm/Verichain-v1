@@ -9,7 +9,7 @@ const hashing=require('./hashing');
 
 const viewuser=require('./viewuser');
 
-mongoose.connect("mongodb://0.0.0.0:27017/reactnode",{useUnifiedTopology: true},(err,client)=>{
+mongoose.connect("mongodb+srv://verichain:helloverichain123@main.ehj4f.mongodb.net/verichain_database?retryWrites=true&w=majority",{useUnifiedTopology: true},(err,client)=>{
     if(!err)
     {
         console.log("connection to database successfull")
