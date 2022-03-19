@@ -75,7 +75,7 @@ exports.signOut=async(req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None",
-        domain:"https://verichain.live"
+        // domain:"https://verichain.live"
     }).status(200).json({success:true,data:"Logged out!"});
 
 }
@@ -111,7 +111,7 @@ const createusertoken=async(user,code,req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None",
-        domain:"https://verichain.live"
+        // domain:"https://verichain.live"
     }).status(200).json({success:true,data:"Login successful!"});
 
     console.log("created token and sent");
@@ -139,11 +139,11 @@ exports.checkUser_stud=async(req,res,next)=>{
         const token=req.cookies.jwt;
         try{
             const decode= await jwt.verify(token,"random_key");
-            console.log(decode)
+            console.log(decode +"mss")
             // const [{name}]= await User.find({name:decode.name});
             const data=await User.findOne({name:decode.name})
             
-            console.log(data);
+            console.log(data + "findone");
             currentuser=data;
         
         }

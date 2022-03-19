@@ -8,7 +8,7 @@ export const useCheckUser=()=>{
     const [user,setUser]=useState({});
     useEffect(()=>{
         const checkUser=async()=>{
-            axios.get("/users_stud").then((res)=>{
+            axios.get("/api/users_stud").then((res)=>{
                 console.log(res.data.currentuser);
                 console.log("usecheck")
                 setUser(res.data.currentuser);

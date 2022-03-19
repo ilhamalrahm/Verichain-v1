@@ -23,7 +23,7 @@ const Userpage =()=> {
 
 
     const setUserContext=()=>{
-        axios.get("/api/users_stud",{withCredentials:true}).then((res)=>{
+        axios.get("/api/users_stud").then((res)=>{
             setUser(res.data.currentuser);
             console.log("current user set");
             
@@ -52,9 +52,11 @@ const Userpage =()=> {
     const Login=async()=>{
         const emails=document.getElementById("email").value;
         const passwords=document.getElementById("password").value
+        console.log(emails +" "+ passwords+ "  see");
+        console.log("where is login")
         
 
-        axios.post("/api/auth/signin_stud",{withCredentials:true},{
+        axios.post("/api/auth/signin_stud",{
             email:emails,
             password:passwords,
         }).then(async(res)=>{
@@ -70,7 +72,7 @@ const Userpage =()=> {
     const [pdf,setPdf]=useState([]);
 
     const Signout=()=>{
-        axios.get("/api/auth/signout",{withCredentials:true}).then(async(res)=>{
+        axios.get("/api/auth/signout").then(async(res)=>{
             setMessage(res.data.data);
             await setUserContext();
             
@@ -79,7 +81,8 @@ const Userpage =()=> {
    
 
     useEffect(()=>{
-        console.log("useffect running");
+        console.log("useffect runningpp");
+        console.log(user);
         
         try{
             axios.post("/api/pdf_stud",{
@@ -94,7 +97,7 @@ const Userpage =()=> {
 
         }catch(e)
         {
-            console.log("unable to fetch")
+            console.log("unable to fetch" +e)
         }
             
         }
