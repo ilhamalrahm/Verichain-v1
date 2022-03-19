@@ -75,7 +75,7 @@ exports.signOut=async(req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None",
-        domain:"http://3.6.100.244/"
+        domain:"https://verichain.live"
     }).status(200).json({success:true,data:"Logged out!"});
 
 }
@@ -111,7 +111,7 @@ const createusertoken=async(user,code,req,res)=>{
         httpOnly:true,
         secure:true,
         sameSite:"None",
-        domain:"http://verichain.live"
+        domain:"https://verichain.live"
     }).status(200).json({success:true,data:"Login successful!"});
 
     console.log("created token and sent");
