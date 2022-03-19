@@ -20,9 +20,10 @@ mongoose.connect("mongodb+srv://verichain:helloverichain123@main.ehj4f.mongodb.n
         console.log("error connecting to database")
     }
 }
-)
+);
+var corseoptions={credentials:true}
 
-app.use(cors());
+app.use(cors(corseoptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended:true,
