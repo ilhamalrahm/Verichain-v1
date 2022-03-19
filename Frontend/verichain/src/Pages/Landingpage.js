@@ -277,13 +277,13 @@ const Card=(props)=>{
 return(
 
   
-  <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" id="card" style={props.style}>
+  <div className="filecard p-2 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" id="card" style={props.style}>
      
-      <a href={href} className="pdfname text-white mx-5" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
+      <a href={href} className="pdfname text-white mx-5" target="_blank" style={{fontSize:"1.5rem",textDecoration:"none",fontWeight:"bolder"}}>
       <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
       {name}</a>
-      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
-      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{stud}</p>
+      <p className="pdfname text-break text-white" style={{fontSize:"1.0rem"}}>{org}</p>
+      <p className="pdfname text-break text-white" style={{fontSize:"1.0rem"}}>{stud}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
   
