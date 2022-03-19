@@ -23,7 +23,7 @@ const Userpage =()=> {
 
 
     const setUserContext=()=>{
-        axios.get("/api/users_stud").then((res)=>{
+        axios.get("/api/users_stud",{withCredentials:true}).then((res)=>{
             setUser(res.data.currentuser);
             console.log("current user set");
             
@@ -54,7 +54,7 @@ const Userpage =()=> {
         const passwords=document.getElementById("password").value
         
 
-        axios.post("/api/auth/signin_stud",{
+        axios.post("/api/auth/signin_stud",{withCredentials:true},{
             email:emails,
             password:passwords,
         }).then(async(res)=>{
@@ -70,7 +70,7 @@ const Userpage =()=> {
     const [pdf,setPdf]=useState([]);
 
     const Signout=()=>{
-        axios.get("/api/auth/signout").then(async(res)=>{
+        axios.get("/api/auth/signout",{withCredentials:true}).then(async(res)=>{
             setMessage(res.data.data);
             await setUserContext();
             

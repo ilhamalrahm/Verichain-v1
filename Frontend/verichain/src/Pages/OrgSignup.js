@@ -46,7 +46,7 @@ const UserSignUp = () => {
         alert("Password should be more than 8 characters long");
       }
       else{
-      await axios.post('/auth/signup_org',{name,password,email}).then((res)=>{
+      await axios.post('/api/auth/signup_org',{withCredentials:true},{name,password,email}).then((res)=>{
         if(res.data.success==false)
         {
           setMessage(res.data.data);
