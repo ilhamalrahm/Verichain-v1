@@ -365,7 +365,7 @@ You have to upload the certificate below and add the email id linked with the ce
 
       </div>
 
-      <div className="buttons position-relative wrap d-flex flex-column justify-content-center align-items-center my-2 py-2">
+      <div className="buttons position-relative wrap px-2 d-flex flex-column justify-content-center align-items-center my-2 py-2">
         <div className="inner position-relative pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
           <img src={Uploads} className="position-relative p-0" alt="" style={{height:"30%",width:"30%"}} />
           <div className="id position-relative px-2">
@@ -411,7 +411,7 @@ You have to upload the certificate below and add the email id linked with the ce
       {pdf.map((element)=>(
         
        
-        <Card hash={element.hash} href={element.pdflink} email={element.stud_email} name={element.filename} style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
+        <Card hash={element.hash} href={element.pdflink} email={element.stud_email} name={element.filename} style={{backgroundColor:"#2A628F", width:"70%",height:"60%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
 
            
 
@@ -510,12 +510,12 @@ const Card=(props)=>{
   }
 return(
 
-  <div className="filecard p-3 mx-2 my-3 text-wrap position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
+  <div className="filecard p-2 mx-2 my-3 text-wrap position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
   
   <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
   <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
   {name}</a>
-  <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{email}</p>
+  <p className="pdfname text-white text-break" style={{fontSize:"1.3rem"}}>{email}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
 

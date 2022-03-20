@@ -115,7 +115,7 @@ const Userpage =()=> {
       if(user){
   
     return (
-      <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
+      <section className="main position-absolute" style={{backgroundColor:"#16324F",overflowY:"scroll", height:"100%"}}>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
           <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
@@ -403,12 +403,12 @@ const Userpage =()=> {
       }
     return(
   
-      <div className="filecard p-3 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
+      <div className="filecard p-2 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
      
       <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
-      <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
+      <img src={File} className="position-relative text-break p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
       {name}</a>
-      <p className="pdfname text-white" style={{fontSize:"1.3rem"}}>{org}</p>
+      <p className="pdfname text-break text-white" style={{fontSize:"1.3rem"}}>{org}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
      

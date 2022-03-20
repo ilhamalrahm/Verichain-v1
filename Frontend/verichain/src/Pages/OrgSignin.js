@@ -36,7 +36,7 @@ const Signin_org=()=>{
         const passwords=document.getElementById("password").value
         console.log(names + passwords);
 
-        axios.post("/api/auth/signin_org",{withCredentials:true},{
+        axios.post("/api/auth/signin_org",{
             name:names,
             password:passwords,
         }).then(async(res)=>{

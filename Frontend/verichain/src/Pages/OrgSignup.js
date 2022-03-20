@@ -46,7 +46,7 @@ const UserSignUp = () => {
         alert("Password should be more than 8 characters long");
       }
       else{
-      await axios.post('/api/auth/signup_org',{withCredentials:true},{name,password,email}).then((res)=>{
+      await axios.post('/api/auth/signup_org',{name,password,email}).then((res)=>{
         if(res.data.success==false)
         {
           setMessage(res.data.data);
@@ -209,7 +209,7 @@ else
             <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
            
 
-           <div className="btn btn-md mt-3 signup text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
+           <div className="btn btn-md mt-3 signup text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign Up</div>
 
           </div>
         </div>

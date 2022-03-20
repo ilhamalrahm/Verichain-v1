@@ -106,7 +106,7 @@ if(isDesktopOrLaptop)
      
         <div className="details py-5 " style={{maxWidth:"40%"}}>
           <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Welcome to Verichain
+          Welcome to Verichain.
 We help you keep your certificates and connect them with a unique token that proves their authenticity.
 
  If you are an organization, you must enter the connected email id and upload the certificates.
@@ -171,8 +171,8 @@ else{
     <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
     <div className="sidebar position-absolute" id="sidebar" style={{backgroundColor:"#2A628F",borderRadius:"10px",zIndex:"100", visibility:"hidden",right:"0%",height:"100vh",width:"40%"}}>
        <div className="btn btn-close position-absolute text-white" onClick={Toggle} style={{left:"3%",top:"1%", backgroundColor:"#3E92CC"}}></div>
-       <div className="btn position-absolute text-white" onClick={Student} style={{left:"15%",top:"8%", backgroundColor:"#3E92CC",width:"70%"}}>Student</div>
-       <div className="btn position-absolute text-white" onClick={Company} style={{left:"15%",top:"14%", backgroundColor:"#3E92CC",width:"70%"}}>Organisation</div>
+       <div className="btn position-absolute text-white" onClick={Student} style={{left:"15%",top:"8%", backgroundColor:"#3E92CC",width:"80%"}}>Student</div>
+       <div className="btn position-absolute text-white" onClick={Company} style={{left:"15%",top:"14%", backgroundColor:"#3E92CC",width:"80%"}}>Organisation</div>
 
             </div>
       <nav className="navbar navbar-dark d-flex flex-row"style={{backgroundColor:"#16324F"}}>
