@@ -14,7 +14,7 @@ import axios from "axios";
 
 const Landing = () => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 768px)'
+    query: '(min-width: 840px)'
   });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [tog,setTog]=useState(false);
@@ -93,11 +93,18 @@ if(isDesktopOrLaptop)
         </div>
       </nav>
 
+
+<div className="container position-relative pt-5" style={{marginBottom:"20%",marginTop:"5%"}}>
+<b className="Head position-absolute text-white" style={{top:"0%",left:"20%"}}>Verichain</b>
+</div>
+
+     
+
      
       <div className="how position-relative d-md-flex flex-md-row flex-md-wrap justify-content-md-around my-5 py-5"style={{alignContent:"center"}}>
      
         <div className="work py-5 " style={{maxWidth:"20%"}}>
-          <p className="work text-white text-wrap" style={{fontSize:"3.5rem", fontWeight:"bold"}}>
+          <p className="work text-white text-wrap" style={{fontSize:"3.5rem", fontWeight:"bold",fontFamily:"Monaco"}}>
             How does it work?
           </p>
         </div>
@@ -105,12 +112,34 @@ if(isDesktopOrLaptop)
 
      
         <div className="details py-5 " style={{maxWidth:"40%"}}>
-          <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Welcome to Verichain.
-We help you keep your certificates and connect them with a unique token that proves their authenticity.
 
- If you are an organization, you must enter the connected email id and upload the certificates.
-If you are a student, all you have to do is log in using your official email id, and that's it! You will get a list of all of your certificates.
+
+        <b className="text-white" style={{fontSize:"2.5rem",fontFamily:"Monaco"}}>
+         Welcome to Verichain. <br/>
+         </b> <br/>
+
+          <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem",fontFamily:"Monaco"}}>
+        
+         <ul className="list">
+
+       <li>A certificate storage and authentication portal.<br/></li>  
+
+
+<li>We aim to bring more value to all certificates issued!!</li>
+<li>
+Sign -up as a Student to access all your certificates linked to your email!<br/>
+</li>
+<li>Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
+<li>We only allow valid organizations to upload certificates.</li>
+
+
+         </ul>
+
+
+
+
+
+
           </p>
         </div>
 
@@ -124,8 +153,8 @@ If you are a student, all you have to do is log in using your official email id,
       </div>
 
       <div className="buttons position-relative wrap d-md-flex justify-content-around my-2 py-3">
-        <div className="btn signup btn-md text-white" onClick={Company} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Organisation</div>
-        <div className="btn signin text-white" onClick={Student} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Student</div>
+        <div className="btn signup btn-md text-white" onClick={Company} style={{borderRadius:"15px",fontSize:"1.5rem"}}>Organisation</div>
+        <div className="btn signin text-white" onClick={Student} style={{borderRadius:"15px",fontSize:"1.5rem"}}>Student</div>
       </div>
 
       <img src={Try} alt="" style={{width:"400px",height:"500px"}} />
@@ -137,7 +166,7 @@ If you are a student, all you have to do is log in using your official email id,
             <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Unique Id:</p>
             <input className="form-control px-2 py-3 " id="hash" style={{width:"100%"}} type="text" placeholder="Unique ID" aria-label="default input example"></input>
 
-           <div className="btn btn-md mt-3 text-white" onClick={fetchPdf} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Search</div>
+           <div className="btn signin btn-md mt-3 text-white" onClick={fetchPdf} style={{borderRadius:"15px",fontSize:"1.5rem"}}>Search</div>
 
           </div>
         </div>
@@ -168,11 +197,11 @@ If you are a student, all you have to do is log in using your official email id,
 }
 else{
   return(
-    <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
+    <section className="main" style={{backgroundColor:"#16324F", height:"100%",width:"100vw"}}>
     <div className="sidebar position-absolute" id="sidebar" style={{backgroundColor:"#2A628F",borderRadius:"10px",zIndex:"100", visibility:"hidden",right:"0%",height:"100vh",width:"40%"}}>
        <div className="btn btn-close position-absolute text-white" onClick={Toggle} style={{left:"3%",top:"1%", backgroundColor:"#3E92CC"}}></div>
-       <div className="btn position-absolute text-white" onClick={Student} style={{left:"15%",top:"8%", backgroundColor:"#3E92CC",width:"80%"}}>Student</div>
-       <div className="btn position-absolute text-white" onClick={Company} style={{left:"15%",top:"14%", backgroundColor:"#3E92CC",width:"80%"}}>Organisation</div>
+       <div className="btn position-absolute text-white" onClick={Student} style={{left:"15%",top:"8%", backgroundColor:"#3E92CC",width:"80%"}}> <b className="student" style={{fontSize:"0.8rem"}}>Student</b></div>
+       <div className="btn position-absolute text-white" onClick={Company} style={{left:"15%",top:"14%", backgroundColor:"#3E92CC",width:"80%"}}> <b className="org" style={{fontSize:"0.8rem"}}>Organisation</b></div>
 
             </div>
       <nav className="navbar navbar-dark d-flex flex-row"style={{backgroundColor:"#16324F"}}>
@@ -190,23 +219,42 @@ else{
       
       </nav>
 
+      <div className="container d-flex justify-content-center position-relative align-items-center" style={{marginBottom:"9%",marginTop:"19%"}}>
+<b className="Head text-white" style={{fontSize:"2.4rem",top:"0%",left:"0%"}}>Verichain</b>
+</div>
+
       <div className="container written d-flex flex-column justify-content-center align-items-center position-relative p-5">
 
-        <div className="work py-5  " style={{maxWidth:"80%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"3.0rem", fontWeight:"bold"}}>
+        {/* <div className="work py-3  " style={{maxWidth:"90%"}}>
+            <p className="work text-white text-wrap" style={{fontSize:"1.3rem", fontWeight:"bold"}}>
               How does it work?
             </p>
-          </div>
+          </div> */}
         
 
       
-          <div className="details py-5 " style={{maxWidth:"95%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.2rem"}}>
-            Welcome to Verichain
-We help you keep your certificates and connect them with a unique token that proves their authenticity.
 
- If you are an organization, you must enter the connected email id and upload the certificates.
-If you are a student, all you have to do is log in using your official email id, and that's it! You will get a list of all of your certificates.
+          <div className="details py-2 " style={{maxWidth:"95%"}}>
+          <b  className="text-white" style={{fontSize:"1.2rem"}}>
+         Welcome to Verichain! <br/>
+         </b> <br/>
+            <p className="work text-white text-wrap" style={{fontSize:"1.0rem"}}>
+            {/* <b style={{fontSize:"1.9rem"}}>Welcome to Verichain!</b> <br/><br/> */}
+          
+            <ul className="list">
+
+<li>A certificate storage and authentication portal.<br/></li>  
+
+
+<li>We aim to bring more value to all certificates issued!!</li>
+<li>
+Sign -up as a Student to access all your certificates linked to your email!<br/>
+</li>
+<li>Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
+<li>We only allow valid organizations to upload certificates.</li>
+
+
+  </ul>
             </p>
          </div>
 
@@ -220,7 +268,7 @@ If you are a student, all you have to do is log in using your official email id,
         <div className="inner position-relative flex-column pb-3 pt-3 align-items-center d-flex" style={{backgroundColor:"white",maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
           <img src={Chain} className="position-relative p-2" alt="" style={{height:"30%",width:"30%"}} />
           <div className="id position-relative px-3">
-            <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Unique Id:</p>
+            <p className="id" style={{fontWeight:"bolder", fontSize:"1.4rem"}}>Unique Id:</p>
             <input className="form-control px-2 py-3 " style={{width:"100%"}} id="hash" type="text" placeholder="Unique ID" aria-label="default input example"></input>
 
            <div className="btn btn-md mt-3 text-white" onClick={fetchPdf} style={{backgroundColor:"#2A628F",borderRadius:"30px",fontSize:"1.5rem"}}>Search</div>

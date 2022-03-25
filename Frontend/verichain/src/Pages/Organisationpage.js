@@ -134,7 +134,7 @@ const Orgpage = () => {
 
     
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 768px)'
+    query: '(min-width: 840px)'
   });
 
   const Home=()=>{
@@ -184,9 +184,9 @@ if(isDesktopOrLaptop)
     <section className="main" style={{backgroundColor:"#16324F", height:"100%"}}>
       <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
         <div className="container-fluid justify-content-center position-relative">
-        <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
+        <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"15px",fontSize:"1.5rem",left:"3%"}}>Home</div>
           <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Organisation</p></a>
-          <div className="btn position-absolute signin text-white" onClick={Signout} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Logout</div>
+          <div className="btn position-absolute signin text-white" onClick={Signout} style={{borderRadius:"15px",fontSize:"1.5rem",right:"3%"}}>Logout</div>
           
         </div>
       </nav>
@@ -196,19 +196,25 @@ if(isDesktopOrLaptop)
 
      
         <div className="details py-2 " style={{maxWidth:"80%"}}>
-          <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Handling certificates after any event can be a real headache, and we make it a piece of cake.
-You have to upload the certificate below and add the email id linked with the certificate. The certificates will show up in their account whenever the user logs in using the same email id. This provides you with a hassle-free way of distributing certificates provides you with a token of authenticity, and ensures that no one can forfeit your certificates.
+          <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem"}}>
+          <ul>
+            <li>Verichain makes keeping track of certificates hassle-free!</li>
+            <li>Upload the certificate with the linked email, and the student is notified by email.
+</li>
+          <li>We bring value to your certificates by assigning a unique code to your certificates.</li>
+          <li>Any organization can use the hash from the student to verify the credibility of your certificates.</li>
+        <li>We also act as a storage portal for all your certificates.</li>
+          </ul>
           </p>
         </div>
 
  
       </div>
 
-      <div className="buttons position-relative flex-wrap d-flex justify-content-around my-2 py-2">
+      <div className="buttons position-relative flex-wrap align-items-center d-flex justify-content-around my-2 py-2">
 
-        <div className="inner position-relative pt-3  pb-3 align-items-center d-md-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Uploads} className="position-relative p-0" alt="" style={{height:"60%",width:"60%"}} />
+        <div className="inner position-relative pt-3 my-3  pb-3 align-items-center d-md-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+          <img src={Uploads} className="position-relative p-0" alt="" style={{height:"40%",width:"40%"}} />
           <div className="id position-relative px-2">
             <p className="id text-white"  style={{fontWeight:"bolder", fontSize:"2.0rem"}}>File link:</p>
             <input className="form-control px-3 py-2" id="pdflink" style={{width:"100%", backgroundColor:"#94C8EC"}} type="text" placeholder="File Link" aria-label="default input example"></input>
@@ -216,8 +222,9 @@ You have to upload the certificate below and add the email id linked with the ce
 
           </div>
         </div>
-        <div className="inner position-relative pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Chain} className="position-relative p-0" alt="" style={{height:"60%",width:"60%"}} />
+
+        <div className="inner position-relative pt-3 my-3 pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+          <img src={Chain} className="position-relative p-0" alt="" style={{height:"350%",width:"33%"}} />
           <div className="id position-relative px-2">
             <p className="id text-white text-nowrap"  style={{fontWeight:"bolder", fontSize:"2.0rem"}}>File name:</p>
             <input className="form-control px-3 py-2 " id="filename" style={{width:"100%",backgroundColor:"#94C8EC",}} type="text" placeholder="File Name" aria-label="default input example"></input>
@@ -226,7 +233,8 @@ You have to upload the certificate below and add the email id linked with the ce
 
           </div>
         </div>
-        <div className="inner position-relative pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+
+        <div className="inner position-relative my-3 pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
           <img src={Mail} className="position-relative p-0" alt="" style={{height:"60%",width:"60%"}} />
           <div className="id position-relative px-2">
             <p className="id text-white text-nowrap"  style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Linked Email:</p>
@@ -239,7 +247,7 @@ You have to upload the certificate below and add the email id linked with the ce
        
       </div>
 
-      <div className="btn btn-md mt-3 text-white" onClick={()=>Upload(org)} style={{backgroundColor:"#2A628F",borderRadius:"30px",width:"15%",fontSize:"1.5rem", boxShadow: "0px 2px 2px black"}}>Upload</div>
+      <div className="btn btn-md mt-3 text-white" onClick={()=>Upload(org)} style={{backgroundColor:"#2A628F",borderRadius:"15px",width:"15%",fontSize:"1.5rem", boxShadow: "0px 2px 2px black"}}>Upload</div>
       <p className="id docstatus py-2" id="docstatus" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{docstatus}</p>
 
 
@@ -278,9 +286,9 @@ You have to upload the certificate below and add the email id linked with the ce
           <section className="main position-absolute" style={{backgroundColor:"#16324F",width:"100%", height:"100vh", overflowY:"scroll"}}>
           <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
             <div className="container-fluid justify-content-center position-relative">
-            <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
+            <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"15px",fontSize:"1.5rem",left:"3%"}}>Home</div>
               <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Org</p></a>
-              <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Sign up</div>
+              <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"15px",fontSize:"1.5rem",right:"3%"}}>Sign up</div>
             </div>
           </nav>
     
@@ -298,7 +306,7 @@ You have to upload the certificate below and add the email id linked with the ce
                   <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
                   <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
   
-                  <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                  <div className="btn btn-md signin mt-3 text-white" type="Submit" onClick={Login} style={{borderRadius:"15px",fontSize:"1.5rem"}}>Sign In</div>
                   <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
   
               </div>
@@ -339,22 +347,28 @@ else{
             </div>
       <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
         <div className="container-fluid justify-content-center position-relative">
-          <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Organisation</p></a>
+          <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"1.7rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Organisation</p></a>
           <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
         </div>
       </nav>
 
      
-      <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-5 py-5"style={{alignContent:"center"}}>
+      <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-2 py-5"style={{alignContent:"center"}}>
      
        
        
 
      
-        <div className="details py-2 " style={{maxWidth:"80%"}}>
-          <p className="work text-white text-wrap" style={{fontSize:"1.5rem"}}>
-          Handling certificates after any event can be a real headache, and we make it a piece of cake.
-You have to upload the certificate below and add the email id linked with the certificate. The certificates will show up in their account whenever the user logs in using the same email id. This provides you with a hassle-free way of distributing certificates provides you with a token of authenticity, and ensures that no one can forfeit your certificates.
+        <div className="details py-2 " style={{maxWidth:"90%"}}>
+          <p className="work text-white text-start text-wrap" style={{fontSize:"1.0rem"}}>
+          <ul>
+            <li>Verichain makes keeping track of certificates hassle-free!</li>
+            <li>Upload the certificate with the linked email, and the student is notified by email.
+              </li>
+          <li>We bring value to your certificates by assigning a unique code to your certificates.</li>
+          <li>Any organization can use the hash from the student to verify the credibility of your certificates.</li>
+        <li>We also act as a storage portal for all your certificates.</li>
+          </ul>
           </p>
         </div>
 
@@ -366,30 +380,31 @@ You have to upload the certificate below and add the email id linked with the ce
       </div>
 
       <div className="buttons position-relative wrap px-2 d-flex flex-column justify-content-center align-items-center my-2 py-2">
-        <div className="inner position-relative pt-3  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Uploads} className="position-relative p-0" alt="" style={{height:"30%",width:"30%"}} />
-          <div className="id position-relative px-2">
-            <p className="id text-white" style={{fontWeight:"bolder", fontSize:"1.7rem"}}>File link:</p>
-            <input class="form-control px-3 py-2 " id="pdflink" style={{width:"100%", backgroundColor:"#94C8EC"}} type="text" placeholder="File Link" aria-label="default input example"></input>
+        <div className="inner position-relative pt-3 justify-content-center pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+          <img src={Uploads} className="position-relative p-0" alt="" style={{height:"25%",width:"25%"}} />
+            <div className="id position-relative px-2">
+              <p className="id text-white" style={{fontWeight:"bolder", fontSize:"1.4rem"}}>File link:</p>
+              <input class="form-control px-3 py-2 " id="pdflink" style={{width:"100%", backgroundColor:"#94C8EC"}} type="text" placeholder="File Link" aria-label="default input example"></input>
 
-          
+            
 
-          </div>
+            </div>
         </div>
-        <div className="inner position-relative pt-3 my-5  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Mail} className="position-relative p-0" alt="" style={{height:"30%",width:"30%"}} />
+
+        <div className="inner position-relative pt-3 my-5 justify-content-center  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+          <img src={Mail} className="position-relative p-0" alt="" style={{height:"25%",width:"25%"}} />
           <div className="id position-relative px-2">
-            <p className="id text-white text-nowrap" style={{fontWeight:"bolder", fontSize:"1.7rem"}}>File Name:</p>
+            <p className="id text-white text-nowrap" style={{fontWeight:"bolder", fontSize:"1.4rem"}}>File Name:</p>
             <input className="form-control px-3 py-2" id="filename" style={{width:"100%",backgroundColor:"#94C8EC",}} type="text" placeholder="File name" aria-label="default input example"></input>
 
-          
-
           </div>
         </div>
-        <div className="inner position-relative pt-3 my-2  pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
-          <img src={Mail} className="position-relative p-0" alt="" style={{height:"30%",width:"30%"}} />
+
+
+        <div className="inner position-relative justify-content-center pt-0 my-2 pb-3 align-items-center d-flex" style={{maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
+          <img src={Mail} className="position-relative p-0" alt="" style={{height:"25%",width:"25%"}} />
           <div className="id position-relative px-2">
-            <p className="id text-white text-nowrap" style={{fontWeight:"bolder", fontSize:"1.7rem"}}>Linked Email:</p>
+            <p className="id text-white text-nowrap" style={{fontWeight:"bolder", fontSize:"1.4rem"}}>Linked Email:</p>
             <input className="form-control px-3 py-2 " id="stud_email" style={{width:"100%",backgroundColor:"#94C8EC",}} type="text" placeholder="Email" aria-label="default input example"></input>
 
           
@@ -399,11 +414,11 @@ You have to upload the certificate below and add the email id linked with the ce
        
       </div>
 
-      <div className="btn btn-md mt-3 text-white" onClick={()=>Upload(org)} style={{backgroundColor:"#2A628F",borderRadius:"30px",width:"30%",fontSize:"1.3rem", boxShadow: "0px 2px 2px black"}}>Upload</div>
+      <div className="btn btn-md mt-3 text-white" onClick={()=>Upload(org)} style={{backgroundColor:"#2A628F",borderRadius:"15px",width:"50%",fontSize:"1.3rem", boxShadow: "0px 2px 2px black"}}>Upload</div>
 
 
       <div className="files py-5 text-start d-flex justify-content-start">
-        <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.5rem"}}>Your previous uploads:</p>
+        <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"1.6rem"}}>Your previous uploads:</p>
       </div>
 
       <div className="filelist d-flex flex-wrap position-relative flex-column align-items-center justify-content-around py-3">  
@@ -411,7 +426,7 @@ You have to upload the certificate below and add the email id linked with the ce
       {pdf.map((element)=>(
         
        
-        <Card hash={element.hash} href={element.pdflink} email={element.stud_email} name={element.filename} style={{backgroundColor:"#2A628F", width:"70%",height:"60%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
+        <Cardmob hash={element.hash} href={element.pdflink} email={element.stud_email} name={element.filename} style={{backgroundColor:"#2A628F", width:"60%",height:"40%",borderRadius:"10px",boxShadow:"4px 3px 4px"}} />
 
            
 
@@ -447,26 +462,26 @@ You have to upload the certificate below and add the email id linked with the ce
             </div>
           <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
             <div className="container-fluid justify-content-center position-relative">
-              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Org</p></a>
+              <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"1.4rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Org</p></a>
               <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
             </div>
           </nav>
     
          
-          <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-5 py-5"style={{alignContent:"center"}}>
+          <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-3 py-5"style={{alignContent:"center"}}>
   
-          <div className="outer p-2" style={{backgroundColor:"#16324F",maxWidth:"70%",maxHeight:"20%",borderRadius:"20px", borderStyle:"solid",borderColor:"white",borderWidth:"medium"}}>
+          <div className="outer p-2" style={{backgroundColor:"#16324F",maxWidth:"80%",maxHeight:"20%",borderRadius:"20px", borderStyle:"solid",borderColor:"white",borderWidth:"medium"}}>
           <div className="inner position-relative flex-column pb-3 pt-3 align-items-center d-flex" style={{backgroundColor:"white",maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
             
             <div className="id position-relative px-3">
-              <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
+              <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Email Id:</p>
               <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email Id" aria-label="default input example"></input>
-              <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
+              <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Password:</p>
               <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
              
   
-             <div className="btn btn-md signin mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
-             <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
+             <div className="btn btn-md signin mt-3 text-white" type="Submit" onClick={Login} style={{borderRadius:"15px",fontSize:"1.3rem"}}>Sign in</div>
+             <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.3rem"}}>{message}</p>
   
             </div>
           </div>
@@ -515,7 +530,40 @@ return(
   <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.7rem",textDecoration:"none",fontWeight:"bolder"}}>
   <img src={File} className="position-relative p-0" alt="" style={{height:"50%",width:"50%"}} /> <br/>
   {name}</a>
-  <p className="pdfname text-white text-break" style={{fontSize:"1.3rem"}}>{email}</p>
+  <p className="pdfname text-white text-break" style={{fontSize:"1.0rem"}}>{email}</p>
+      <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
+      <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
+
+
+   
+ </div>
+);
+}
+const Cardmob=(props)=>{
+  
+  const {name,href,hash,email}=props;
+ 
+  const [show,setShow]=useState(true);
+
+  const Show=()=>{
+    setShow(!show);
+    if(show==true)
+    {
+      document.getElementById(hash).style.fontSize="1.0rem";
+    }
+    else{
+      document.getElementById(hash).style.fontSize="0.0rem";
+    }
+
+  }
+return(
+
+  <div className="filecard p-2 mx-2 my-3 text-wrap position-relative d-flex flex-column justify-content-center align-items-center" style={props.style}>
+  
+  <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.3rem",textDecoration:"none",fontWeight:"bolder"}}>
+  <img src={File} className="position-relative p-0" alt="" style={{height:"30%",width:"30%"}} /> <br/>
+  {name}</a>
+  <p className="pdfname text-white text-break" style={{fontSize:"0.6rem"}}>{email}</p>
       <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
       <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
 
