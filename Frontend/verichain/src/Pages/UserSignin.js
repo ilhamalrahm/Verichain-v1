@@ -295,7 +295,7 @@ export default Signin_user;
     <label ><b className="pass text-white" style={{fontSize:"1.5rem"}}>Password:</b></label><br/>
     <input type="text" id="password" name="password" style={{borderRadius:"20px",width:"60%"}} /><br/><br/>
     <div className="signout btn" onClick={Login} style={{borderRadius:"20px",color:"white",backgroundColor:"black"}}>Sign in</div> 
-    <p className="signumlink text-white pt-3">Don't have an account yet?</p> <Link to="/signup" className='text-white px-3' style={{textDecoration:"none"}}> <b className="link text-white" style={{textDecoration:"none"}}>Sign up</b> </Link>
+    <p className="signumlink text-white pt-3">Don't have an account yet?</p> <li className="listelem"nk to="/signup" className='text-white px-3' style={{textDecoration:"none"}}> <b className="link text-white" style={{textDecoration:"none"}}>Sign up</b> </Link>
 
 </div>
 

@@ -122,15 +122,15 @@ if(isDesktopOrLaptop)
         
          <ul className="list">
 
-       <li>A certificate storage and authentication portal.<br/></li>  
+       <li className="listelem">A certificate storage and authentication portal.<br/></li>  
 
 
-<li>We aim to bring more value to all certificates issued!!</li>
-<li>
+<li className="listelem">We aim to bring more value to all certificates issued!!</li>
+<li className="listelem">
 Sign -up as a Student to access all your certificates linked to your email!<br/>
 </li>
-<li>Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
-<li>We only allow valid organizations to upload certificates.</li>
+<li className="listelem">Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
+<li className="listelem">We only allow valid organizations to upload certificates.</li>
 
 
          </ul>
@@ -238,20 +238,20 @@ else{
           <b  className="text-white" style={{fontSize:"1.2rem"}}>
          Welcome to Verichain! <br/>
          </b> <br/>
-            <p className="work text-white text-wrap" style={{fontSize:"1.0rem"}}>
+            <p className="work text-white text-start text-wrap" style={{fontSize:"1.0rem"}}>
             {/* <b style={{fontSize:"1.9rem"}}>Welcome to Verichain!</b> <br/><br/> */}
           
             <ul className="list">
 
-<li>A certificate storage and authentication portal.<br/></li>  
+<li className="listelem">A certificate storage and authentication portal.<br/></li>  
 
 
-<li>We aim to bring more value to all certificates issued!!</li>
-<li>
+<li className="listelem">We aim to bring more value to all certificates issued!!</li>
+<li className="listelem">
 Sign -up as a Student to access all your certificates linked to your email!<br/>
 </li>
-<li>Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
-<li>We only allow valid organizations to upload certificates.</li>
+<li className="listelem">Provide the unique id wherever needed to prove the authenticity of your certificates!<br/></li>
+<li className="listelem">We only allow valid organizations to upload certificates.</li>
 
 
   </ul>

@@ -133,11 +133,11 @@ const Userpage =()=> {
        
           <div className="details py-2 " style={{maxWidth:"60%"}}>
             <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem"}}>
-            <ul>
-              <li>Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
-              <li>By clicking on "show code" a unique hash for your certificate is generated!</li>
-              <li>Provide this hash whenever you want to prove the authenticity of the certificate</li>
-              <li>Any third party can use the hash to view the certificate via our home page</li>
+            <ul className='list'>
+              <li className="listelem">Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
+              <li className="listelem">By clicking on "show code" a unique hash for your certificate is generated!</li>
+              <li className="listelem">Provide this hash whenever you want to prove the authenticity of the certificate</li>
+              <li className="listelem">Any third party can use the hash to view the certificate via our home page</li>
             </ul>
             </p>
           </div>
@@ -277,12 +277,12 @@ const Userpage =()=> {
   
        
           <div className="details py-2 " style={{maxWidth:"80%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.0rem",fontStyle:"oblique"}}>
-            <ul>
-              <li>Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
-              <li>By clicking on "show code" a unique hash for your certificate is generated!</li>
-              <li>Provide this hash whenever you want to prove the authenticity of the certificate</li>
-              <li>Any third party can use the hash to view the certificate via our home page</li>
+            <p className="work text-white text-start text-wrap" style={{fontSize:"1.0rem",fontStyle:"oblique"}}>
+            <ul className='list'>
+              <li className="listelem">Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
+              <li className="listelem">By clicking on "show code" a unique hash for your certificate is generated!</li>
+              <li className="listelem">Provide this hash whenever you want to prove the authenticity of the certificate</li>
+              <li className="listelem">Any third party can use the hash to view the certificate via our home page</li>
             </ul>
             </p>
           </div>

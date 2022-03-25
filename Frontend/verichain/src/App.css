@@ -38,6 +38,10 @@
   }
 }
 
+li.listelem{
+  padding: 1%;
+}
+
 div.signup{
   background-color: #2A628F;
 
@@ -56,6 +60,8 @@ div.signin:hover{
   background-color: #3E92CC;
 
 }
+
+
 
 b.Head {
   

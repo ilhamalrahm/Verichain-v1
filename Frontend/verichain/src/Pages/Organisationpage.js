@@ -197,13 +197,13 @@ if(isDesktopOrLaptop)
      
         <div className="details py-2 " style={{maxWidth:"80%"}}>
           <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem"}}>
-          <ul>
-            <li>Verichain makes keeping track of certificates hassle-free!</li>
-            <li>Upload the certificate with the linked email, and the student is notified by email.
-</li>
-          <li>We bring value to your certificates by assigning a unique code to your certificates.</li>
-          <li>Any organization can use the hash from the student to verify the credibility of your certificates.</li>
-        <li>We also act as a storage portal for all your certificates.</li>
+          <ul className="list">
+            <li className="listelem">Verichain makes keeping track of certificates hassle-free!</li>
+            <li className="listelem">Upload the certificate with the linked email, and the student is notified by email.
+            </li>
+          <li className="listelem">We bring value to your certificates by assigning a unique code to your certificates.</li>
+          <li className="listelem">Any organization can use the hash from the student to verify the credibility of your certificates.</li>
+        <li className="listelem">We also act as a storage portal for all your certificates.</li>
           </ul>
           </p>
         </div>
@@ -361,13 +361,13 @@ else{
      
         <div className="details py-2 " style={{maxWidth:"90%"}}>
           <p className="work text-white text-start text-wrap" style={{fontSize:"1.0rem"}}>
-          <ul>
-            <li>Verichain makes keeping track of certificates hassle-free!</li>
-            <li>Upload the certificate with the linked email, and the student is notified by email.
+          <ul className="list">
+            <li className="listelem">Verichain makes keeping track of certificates hassle-free!</li>
+            <li className="listelem">Upload the certificate with the linked email, and the student is notified by email.
               </li>
-          <li>We bring value to your certificates by assigning a unique code to your certificates.</li>
-          <li>Any organization can use the hash from the student to verify the credibility of your certificates.</li>
-        <li>We also act as a storage portal for all your certificates.</li>
+          <li className="listelem">We bring value to your certificates by assigning a unique code to your certificates.</li>
+          <li className="listelem">Any organization can use the hash from the student to verify the credibility of your certificates.</li>
+        <li className="listelem">We also act as a storage portal for all your certificates.</li>
           </ul>
           </p>
         </div>
