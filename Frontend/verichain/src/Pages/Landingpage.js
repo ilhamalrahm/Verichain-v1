@@ -115,7 +115,7 @@ if(isDesktopOrLaptop)
 
 
         <b className="text-white" style={{fontSize:"2.5rem",fontFamily:"Monaco"}}>
-         Welcome to Verichain. <br/>
+         Welcome to Verichain! <br/>
          </b> <br/>
 
           <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem",fontFamily:"Monaco"}}>
