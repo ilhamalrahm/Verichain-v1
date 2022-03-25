@@ -14,7 +14,7 @@ const UserSignUp = () => {
   const {org,setOrg}=useContext(UserContext);
   const [message,setMessage]=useState("");
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 768px)'
+    query: '(min-width: 840px)'
   });
 
   const Home=()=>{
@@ -131,7 +131,7 @@ const UserSignUp = () => {
             <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
               <div className="container-fluid justify-content-center position-relative">
               <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
-                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign Up as Org</p></a>
+                <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"1.4rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign Up as Org</p></a>
               </div>
             </nav>
       
@@ -189,27 +189,27 @@ else
             </div>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
-            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign up as org</p></a>
+            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"1.4rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign up as org</p></a>
             <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
           </div>
         </nav>
   
        
-        <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-5 py-5"style={{alignContent:"center"}}>
+        <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-3 py-5"style={{alignContent:"center"}}>
 
         <div className="outer p-2" style={{backgroundColor:"#16324F",width:"70%",maxHeight:"20%",borderRadius:"20px", borderStyle:"solid",borderColor:"white",borderWidth:"medium"}}>
         <div className="inner position-relative flex-column pb-3 pt-3 align-items-center d-flex" style={{backgroundColor:"white",maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
           
           <div className="id position-relative px-3">
-          <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Name:</p>
+          <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Name:</p>
             <input className="form-control px-2 py-3 " id="name" style={{width:"100%"}} type="text" placeholder="Name" aria-label="default input example"></input>
-            <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
+            <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Email Id:</p>
             <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="email" placeholder="Email" aria-label="default input example"></input>
-            <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
+            <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Password:</p>
             <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
            
 
-           <div className="btn btn-md mt-3 signup text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign Up</div>
+           <div className="btn btn-md mt-3 signup text-white" onClick={Submit} style={{borderRadius:"30px",fontSize:"1.3rem"}}>Sign Up</div>
 
           </div>
         </div>

@@ -106,7 +106,7 @@ const Userpage =()=> {
 
     
     const isDesktopOrLaptop = useMediaQuery({
-      query: '(min-width: 768px)'
+      query: '(min-width: 840px)'
     });
     console.log(pdf);
 
@@ -115,12 +115,12 @@ const Userpage =()=> {
       if(user){
   
     return (
-      <section className="main position-absolute" style={{backgroundColor:"#16324F",overflowY:"scroll", height:"100%"}}>
+      <section className="main position-absolute" style={{backgroundColor:"#16324F",overflowY:"scroll", height:"100%",width:"100%"}}>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
-          <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
+          <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"15px",fontSize:"1.5rem",left:"3%"}}>Home</div>
             <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Student</p></a>
-            <div className="btn position-absolute signin text-white" onClick={Signout} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Logout</div>
+            <div className="btn position-absolute signin text-white" onClick={Signout} style={{borderRadius:"15px",fontSize:"1.5rem",right:"3%"}}>Logout</div>
           </div>
         </nav>
   
@@ -132,8 +132,13 @@ const Userpage =()=> {
   
        
           <div className="details py-2 " style={{maxWidth:"60%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.9rem"}}>
-            Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
+            <p className="work text-white text-start text-wrap" style={{fontSize:"1.5rem"}}>
+            <ul>
+              <li>Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
+              <li>By clicking on "show code" a unique hash for your certificate is generated!</li>
+              <li>Provide this hash whenever you want to prove the authenticity of the certificate</li>
+              <li>Any third party can use the hash to view the certificate via our home page</li>
+            </ul>
             </p>
           </div>
   
@@ -148,7 +153,7 @@ const Userpage =()=> {
   
   
         <div className="files py-5 text-start d-flex justify-content-start">
-          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.2rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
+          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"1.8rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
         </div>
   
         <div className="filelist d-flex flex-wrap flex-row align-items-center justify-content-around py-3">  
@@ -184,9 +189,9 @@ const Userpage =()=> {
         <section className="main position-absolute" style={{backgroundColor:"#16324F",width:"100%", height:"100vh", overflowY:"scroll"}}>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
-          <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"30px",fontSize:"1.5rem",left:"3%"}}>Home</div>
+          <div className="btn position-absolute signin text-white" onClick={Home} style={{borderRadius:"15px",fontSize:"1.5rem",left:"3%"}}>Home</div>
             <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Student</p></a>
-            <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"30px",fontSize:"1.5rem",right:"3%"}}>Sign Up</div>
+            <div className="btn position-absolute signin text-white" onClick={Navigate} style={{borderRadius:"15px",fontSize:"1.5rem",right:"3%"}}>Sign Up</div>
           </div>
         </nav>
   
@@ -204,7 +209,7 @@ const Userpage =()=> {
                 <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
                 <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
 
-                <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign In</div>
+                <div className="btn signin btn-md mt-3 text-white" type="Submit" onClick={Login} style={{borderRadius:"15px",fontSize:"1.5rem"}}>Sign In</div>
                 <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
 
 
@@ -265,15 +270,20 @@ const Userpage =()=> {
        
   
        
-        <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-5 py-5"style={{alignContent:"center"}}>
+        <div className="how position-relative d-flex flex-colunm justify-content-center align-items-center my-3 py-5"style={{alignContent:"center"}}>
        
          
          
   
        
           <div className="details py-2 " style={{maxWidth:"80%"}}>
-            <p className="work text-white text-wrap" style={{fontSize:"1.5rem",fontStyle:"oblique"}}>
-            Verichain acts as a  safe keeper of all of your certificates. As soon as the organization uploads your certificate, they are added here. You can find all of your certificates listed below! Just click on them to download them.
+            <p className="work text-white text-wrap" style={{fontSize:"1.0rem",fontStyle:"oblique"}}>
+            <ul>
+              <li>Verichain acts as a storage portal for all your certificates issued by various organizations.</li>
+              <li>By clicking on "show code" a unique hash for your certificate is generated!</li>
+              <li>Provide this hash whenever you want to prove the authenticity of the certificate</li>
+              <li>Any third party can use the hash to view the certificate via our home page</li>
+            </ul>
             </p>
           </div>
   
@@ -287,14 +297,14 @@ const Userpage =()=> {
         
   
   
-        <div className="files py-5 text-start d-flex justify-content-start">
-          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"2.2rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
+        <div className="files py-2 text-start d-flex justify-content-start">
+          <p className="prev uploads px-5 py-3 text-start text-white align-self-start" style={{fontSize:"1.3rem"}}>Files linked to <b className="bold">{user.name}'s </b> Learner Id:</p>
         </div>
   
         <div className="filelist d-flex flex-wrap position-relative flex-column align-items-center justify-content-around py-3">  
 
         {pdf.map((element)=>(
-            <Card href={element.pdflink} name={element.filename} org={element.org} ids={element._id} hash={element.hash}  style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
+            <Cardmob href={element.pdflink} name={element.filename} org={element.org} ids={element._id} hash={element.hash}  style={{backgroundColor:"#2A628F", width:"50%",height:"50%",borderRadius:"10px",boxShadow:"4px 3px 4px"}}/>
 
         ))}
   
@@ -333,7 +343,7 @@ const Userpage =()=> {
             </div>
         <nav className="navbar navbar-dark"style={{backgroundColor:"#16324F"}}>
           <div className="container-fluid justify-content-center position-relative">
-            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"2.0rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Student</p></a>
+            <a className="navbar-brand" href="#"><p className="head" style={{fontWeight:"bolder",fontSize:"1.4rem",borderBottom:"solid",borderColor:"#3E92CC",borderWidth:"thick"}}>Sign in as Student</p></a>
             <div className="btn position-absolute" onClick={Toggle} style={{right:"3%",top:"10%"}}><span class="navbar-toggler-icon"></span></div>
           </div>
         </nav>
@@ -345,15 +355,15 @@ const Userpage =()=> {
         <div className="inner position-relative flex-column pb-3 pt-3 align-items-center d-flex" style={{backgroundColor:"white",maxWidth:"100%",maxHeight:"100%",borderRadius:"20px"}}>
           
           <div className="id position-relative px-3">
-            <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Email Id:</p>
+            <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Email Id:</p>
             <input className="form-control px-2 py-3 " id="email" style={{width:"100%"}} type="text" placeholder="Email ID" aria-label="default input example"></input>
-            <p className="id" style={{fontWeight:"bolder", fontSize:"2.0rem"}}>Password:</p>
+            <p className="id" style={{fontWeight:"bolder", fontSize:"1.3rem"}}>Password:</p>
             <input className="form-control px-2 py-3 " id="password" style={{width:"100%"}} type="password" placeholder="Password" aria-label="default input example"></input>
-            <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"30px",fontSize:"1.5rem"}}>Sign in</div>
+            <div className="btn signin btn-md mt-3 text-white" onClick={Login} style={{borderRadius:"15px",fontSize:"1.3rem"}}>Sign in</div>
            
 
 
-            <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.5rem"}}>{message}</p>
+            <p className="id py-2" style={{fontWeight:"bolder",color:"red", fontSize:"1.3rem"}}>{message}</p>
 
           </div>
         </div>
@@ -420,6 +430,42 @@ const Userpage =()=> {
     );
   }
   
+  const Cardmob=(props)=>{
+    console.log(props);
+    const {name,href,hash,org}=props;
+    console.log(name);
+    
+    const [show,setShow]=useState(true);
+
+    const Show=()=>{
+      setShow(!show);
+      if(show==true)
+      {
+        document.getElementById(hash).style.fontSize="1.0rem";
+      }
+      else{
+        document.getElementById(hash).style.fontSize="0.0rem";
+      }
+
+    }
+  return(
+
+    <div className="filecard p-2 mx-2 my-3 position-relative d-flex flex-column text-wrap justify-content-center align-items-center" style={props.style}>
+   
+    <a href={href} className="pdfname text-white" target="_blank" style={{fontSize:"1.3rem",textDecoration:"none",fontWeight:"bolder"}}>
+    <img src={File} className="position-relative text-break p-0" alt="" style={{height:"30%",width:"30%"}} /> <br/>
+    {name}</a>
+    <p className="pdfname text-break text-white" style={{fontSize:"0.8rem"}}>{org}</p>
+    <div className="btn show signin text-white" onClick={Show} style={{borderRadius:"30px",fontSize:"1.0rem",backgroundColor:"black"}}>Show code</div>
+    <p className="pdfname hashcode text-white text-break py-2" name="hashcode" id={hash} style={{fontSize:"0.0rem" ,visibility:"visible",transition:"0.5s"}}>{hash}</p>
+   
+    
+
+
+     
+   </div>
+  );
+}
   export default Userpage;
 
 // const Userpage=()=>{
