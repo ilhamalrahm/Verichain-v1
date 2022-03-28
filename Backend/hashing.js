@@ -64,15 +64,15 @@ router.post("/hashing",async(req, res) => {
                 from:"ilhamalrahm@gmail.com",
                 to:stud_email,
                 subject:"Certificate Recieved",
-                text:"Your certificate for the "+ filename+ " has been uploaded on Verichain.\n \n"+
+                text:"Your certificate for the "+ filename+ " conducted by "+ org+ " has been uploaded on Verichain.\n \n"+
                 "https://verichain.live/ \n \n"+
                 
                 "To access your certificate follow the following steps:\n"+
-                "1) Sign-up using the email id  which you have received this email\n"+
-                   "(https://verichain.live/user) and sign in\n \n"+
+                "1) Sign-up using your learner id (this email)"+
+                   "(https://verichain.live/signup_stud#) and sign in\n \n"+
 
                 "2) Scroll down and click on the certificate card and download your certificate\n \n"+
-                "What is Verichain and why!?\n \n"+
+                "What is Verichain and why?\n \n"+
                 "1) Verichain is certificate authentication and storage portal.\n"+
                 "2) We aim to bring more value to all certificates issued!!\n"+
                 "3) We provide the unique id wherever needed to prove the authenticity of your certificates!\n"+
@@ -83,7 +83,8 @@ router.post("/hashing",async(req, res) => {
                 "9952006360:Anirudh\n"+
                 "9847347134:Ilham\n \n"+
                 "Follow us on instagram\n"+
-                "@veri.chain"
+                "@veri.chain\n"+
+                "https://instagram.com/veri.chain?utm_medium=copy_link"
                 
 
 
