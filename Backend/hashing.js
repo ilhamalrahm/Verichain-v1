@@ -72,14 +72,14 @@ router.post("/hashing",async(req, res) => {
                    "(https://verichain.live/user) and sign in\n \n"+
 
                 "2) Scroll down and click on the certificate card and download your certificate\n \n"+
-                "What is Verichain and why!?\n /n"+
-                "Verichain is certificate authentication and storage  portal.\n"+
-                "We aim to bring more value to all certificates issued!!\n"+
-                "We provide the unique id wherever needed to prove the authenticity of your certificates!\n"+
-                "We only allow valid organizations to upload certificates.\n"+
-                "Click the show code on the certificate card to get your unique code for the certificate.\n"+
-                "Anyone can verify the certificate by using the code on the landing page\n \n"+
-                "Any issues while accessing the certificate  contact on whatsapp\n"+
+                "What is Verichain and why!?\n \n"+
+                "1) Verichain is certificate authentication and storage portal.\n"+
+                "2) We aim to bring more value to all certificates issued!!\n"+
+                "3) We provide the unique id wherever needed to prove the authenticity of your certificates!\n"+
+                "4) We only allow valid organizations to upload certificates.\n"+
+                "5) Click the show code on the certificate card to get your unique code for the certificate.\n"+
+                "6) Anyone can verify the certificate by using the code on the landing page\n \n"+
+                "Any issues while accessing the certificate contact on Whatsapp:\n"+
                 "9952006360:Anirudh\n"+
                 "9847347134:Ilham\n \n"+
                 "Follow us on instagram\n"+
